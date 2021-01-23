@@ -5,6 +5,9 @@ import ru.crypt.models.Point;
 public class Util {
 
     public static String[] bigram(String str){
+        if(str.length()%2 != 0){
+            str = str.concat(str.substring(str.length()-1));
+        }
         return str.split("(?<=\\G.{2})");
     }
 

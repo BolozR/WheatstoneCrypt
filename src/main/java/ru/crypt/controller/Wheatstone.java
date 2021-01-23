@@ -18,6 +18,7 @@ public class Wheatstone {
         for(String bi : bigrams){
             Point upperPoint = searchCharInSquare(bi.substring(0, 1), square.getUpperSquare());
             Point lowerPoint = searchCharInSquare(bi.substring(1, 2), square.getLowerSquare());
+
             if(lowerPoint.getColumn() == upperPoint.getColumn()) {
                 result = result.concat(square.getUpperSquare()[lowerPoint.getRow()][upperPoint.getColumn()])
                         .concat(square.getLowerSquare()[upperPoint.getRow()][lowerPoint.getColumn()]);
