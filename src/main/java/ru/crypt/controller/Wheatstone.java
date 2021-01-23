@@ -19,13 +19,15 @@ public class Wheatstone {
             Point upperPoint = searchCharInSquare(bi.substring(0, 1), square.getUpperSquare());
             Point lowerPoint = searchCharInSquare(bi.substring(1, 2), square.getLowerSquare());
 
-            if(lowerPoint.getColumn() == upperPoint.getColumn()) {
-                result = result.concat(square.getUpperSquare()[lowerPoint.getRow()][upperPoint.getColumn()])
-                        .concat(square.getLowerSquare()[upperPoint.getRow()][lowerPoint.getColumn()]);
-            } else {
-                result = result.concat(square.getUpperSquare()[upperPoint.getRow()][lowerPoint.getColumn()])
-                        .concat(square.getLowerSquare()[lowerPoint.getRow()][upperPoint.getColumn()]);
-            }
+            boolean isSameCol = lowerPoint.getColumn() == upperPoint.getColumn();
+
+            result = result
+                    .concat(square.getUpperSquare()
+                            [(isSameCol ? lowerPoint : upperPoint).getRow()]
+                            [(isSameCol ? upperPoint : lowerPoint).getColumn()])
+                    .concat(square.getLowerSquare()
+                            [(isSameCol ? upperPoint : lowerPoint).getRow()]
+                            [(isSameCol ? lowerPoint : upperPoint).getColumn()]);
         }
         return result.toUpperCase();
     }
