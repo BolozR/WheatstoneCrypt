@@ -19,6 +19,6 @@ public class Util {
                 }
             }
         }
-        return null;
+        return new Point(-1, -1);
     }
 }
